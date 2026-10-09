@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simple-ripper"
+version = "0.1.0"
+description = "A simple CD ripper with MusicBrainz tagging"
+authors = [{ name = "Mike Hellyer" }]
+requires-python = ">=3.12"
+dependencies = [
+    "PySide6",
+    "platformdirs",
+    "certifi",
+    "mutagen",
+    "imageio-ffmpeg",
+]
+
+[project.scripts]
+simple-ripper = "simple_ripper.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"simple_ripper.gui" = ["resources/*.png"]

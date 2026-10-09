@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Simple-Ripper
+Comment=Rip audio CDs and tag them with MusicBrainz
+Exec=/opt/simple-ripper/Simple-Ripper
+Icon=simple-ripper
+Terminal=false
+Categories=AudioVideo;Audio;DiscBurning;
