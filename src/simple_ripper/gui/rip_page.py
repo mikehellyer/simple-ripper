@@ -621,7 +621,13 @@ class RipPage(QWidget):
     def _on_rip_done(self, outcome) -> None:
         thread = self._rip_thread
         if thread is not None:
-            thread.wait(2000)
+            # done is delivered before the thread has been told to stop
+            # (its quit is queued behind this), so ask it now — waiting
+            # without that just timed out, and dropping a still-running
+            # QThread aborts the app. The worker's run() has already
+            # returned, so this wait is immediate.
+            thread.quit()
+            thread.wait()
             thread.deleteLater()
         if self._rip_worker is not None:
             self._rip_worker.deleteLater()
